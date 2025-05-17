@@ -1,3 +1,11 @@
-FROM openjdk:17-jdk-slim
-COPY target/myapp.jar app.jar
-ENTRYPOINT ["java", "-jar", "app.jar"]
+FROM openjdk:17
+
+WORKDIR /app
+
+COPY HelloServer.java .
+
+RUN javac HelloServer.java
+
+EXPOSE 8080
+
+CMD ["java", "HelloServer"]
